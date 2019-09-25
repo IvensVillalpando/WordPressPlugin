@@ -1,0 +1,278 @@
+@import "bootstrap-grid.css";
+
+/*****
+
+    Canvas Lab
+
+    Font: Open Sans (Thin / Bold)
+    Color: #8997d3
+
+    *****/
+
+.image-analizer * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none !important;
+}
+/*body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+    background: #fafafa;
+}*/
+.image-analizer img {
+    max-width: 100%;
+}
+.image-analizer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #fff;
+}
+.image-analizer .row {
+	margin-left: 0;
+	margin-right: 0;
+}
+.details-picture > div {
+    padding: 10px;
+    border-top: 1px dashed #ddd;
+}
+.details-picture > div:first-child {
+    border-top: none;
+}
+.details-picture span {
+    display: block;
+    color: #8997d3;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 100%;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.details-picture h4 {
+    font-size: 130%;
+    font-weight: inherit;
+    line-height: 100%;
+    margin: 0;
+}
+.preview {
+	position: relative;
+	margin: 0 auto;
+}
+.preview img {
+	display: block;
+	max-height: 250px;
+	margin: 0 auto;
+}
+.preview.active img {
+	cursor: zoom-in;
+}
+.preview-small {
+	display: block;
+	color: #999;
+	font-size: 70%;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 10px;
+}
+body > .preview {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 10px;
+	background: #fff;
+	z-index: 99;
+}
+.picture {
+    text-align: center;
+    padding: 5px;
+    margin: 15px 0;
+	border: 2px dashed transparent;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 10px #ddd;
+    -moz-box-shadow: 1px 1px 10px #ddd;
+    box-shadow: 1px 1px 10px #ddd;
+	cursor: pointer;
+}
+.picture.active {
+	border-color: #bbb;
+}
+.picture > .thumb {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding: 50%;
+	background: no-repeat center center;
+    overflow: hidden;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.picture > .status {
+    color: #fff;
+    font-size: 90%;
+    text-transform: uppercase;
+    padding: 5px;
+    margin: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #000;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    -moz-text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+.picture > .info {
+    line-height: 100%;
+}
+.status.perfecta,
+.status.excelente {
+    background: #39b44a;
+    background: -moz-linear-gradient(left, #39b44a 0%, #8bc53f 100%);
+    background: -webkit-linear-gradient(left, #39b44a 0%,#8bc53f 100%);
+    background: linear-gradient(to right, #39b44a 0%,#8bc53f 100%);
+}
+.status.superbien,
+.status.muybien,
+.status.bien {
+    background: #8bc53f;
+    background: -moz-linear-gradient(left, #8bc53f 0%, #d8df21 100%);
+    background: -webkit-linear-gradient(left, #8bc53f 0%,#d8df21 100%);
+    background: linear-gradient(to right, #8bc53f 0%,#d8df21 100%);
+}
+.status.mejorar {
+    background: #faaf3b;
+    background: -moz-linear-gradient(left, #faaf3b 0%, #fbed21 100%);
+    background: -webkit-linear-gradient(left, #faaf3b 0%,#fbed21 100%);
+    background: linear-gradient(to right, #faaf3b 0%,#fbed21 100%);
+}
+.status.cambiarla {
+    background: #fd8f05;
+    background: -moz-linear-gradient(left, #fd8f05 0%, #fc5a18 100%);
+    background: -webkit-linear-gradient(left, #fd8f05 0%,#fc5a18 100%);
+    background: linear-gradient(to right, #fd8f05 0%,#fc5a18 100%);
+}
+.status.olvidalo {
+    background: #fd171f;
+    background: -moz-linear-gradient(left, #fd171f 0%, #d40209 100%);
+    background: -webkit-linear-gradient(left, #fd171f 0%,#d40209 100%);
+    background: linear-gradient(to right, #fd171f 0%,#d40209 100%);
+}
+.drop-pictures {
+	position: relative;
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.drop-pictures input[type="file"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.drop-pictures #filedrag {
+    color: #999;
+    text-transform: uppercase;
+    padding: 30px;
+    border: 2px dashed #ddd;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.drop-pictures #filedrag > * {
+    display: block;
+}
+.drop-pictures #filedrag small {
+    color: #ccc;
+}
+.drop-pictures #filedrag > img {
+    margin: 0 auto 10px;
+}
+.drop-pictures #filedrag.drag {
+	background: #fafafa;
+}
+#image_loader {
+	position: relative;
+}
+.canvas-loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #fff;
+	opacity: 0.9;
+	filter: opacity(90);
+}
+.canvas-loading > div {
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	-webkit-transform: translate(-50%,0%);
+	-moz-transform: translate(-50%,0%);
+	transform: translate(-50%,0%);
+}
+.canvas-loading span {
+	display: block;
+	color: #8997d3;
+	font-size: 90%;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 10px auto 0;
+}
+.pulse {
+	width: 60px;
+	height: 60px;
+	margin: auto;
+	background-color: #8997d3;
+	border-radius: 100%;
+	-webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+	-moz-animation: sk-scaleout 1.0s infinite ease-in-out;
+	animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+@-webkit-keyframes sk-scaleout {
+	0% {
+		-webkit-transform: scale(0);
+		-moz-transform: scale(0);
+		transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(1.0);
+		-moz-transform: scale(1.0);
+		transform: scale(1.0);
+		opacity: 0;
+	}
+}
+@keyframes sk-scaleout {
+	0% {
+		-webkit-transform: scale(0);
+		-moz-transform: scale(0);
+		transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(1.0);
+		-moz-transform: scale(1.0);
+		transform: scale(1.0);
+		opacity: 0;
+	}
+}
+.mb-1 {
+    margin-bottom: 30px;
+}
+@media (min-width: 767px) {
+	body > .preview {
+		display: none !important;
+	}
+}
